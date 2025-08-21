@@ -1,65 +1,76 @@
-/* Paleta InPulse */
-:root {
-  --preto-carbono: #101010;
-  --off-white: #f5f5f5;
-  --vermelho-paixao: #d62828;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: var(--preto-carbono);
-  color: var(--off-white);
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #fff;
+  line-height: 1.5;
+}
+
+/* Banner */
+.hero .banner {
+  width: 100%;
+  display: block;
+}
+
+/* Produto */
+.produto {
   text-align: center;
+  padding: 40px 20px;
 }
 
-header {
-  padding: 2rem;
-  background: var(--preto-carbono);
-}
-
-header h1 {
-  font-size: 2.5rem;
-  color: var(--vermelho-paixao);
-  margin: 0;
-}
-
-header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.hero {
-  padding: 4rem 2rem;
-}
-
-.hero h2 {
+.produto h1 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 
-.hero p {
+.produto p {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
 }
 
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.galeria img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* CTA */
 .cta {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 40px;
+}
+
+.cta h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.botao {
   display: inline-block;
-  background: var(--vermelho-paixao);
-  color: var(--off-white);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
+  padding: 12px 25px;
+  background: #ff0000;
+  color: #fff;
   font-weight: bold;
-  transition: 0.3s ease;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
-.cta:hover {
-  background: #a61e1e;
-}
-
-footer {
-  padding: 1rem;
-  font-size: 0.9rem;
-  opacity: 0.7;
+.botao:hover {
+  background: #cc0000;
 }
