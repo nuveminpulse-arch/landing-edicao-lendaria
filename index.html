@@ -105,23 +105,29 @@
         .pulse-dot {
             width: 8px;
             height: 8px;
-            border-radius: 999px;
+            aspect-ratio: 1 / 1;
+            /* força sempre redondo */
+            border-radius: 50%;
             background: var(--danger);
             box-shadow: 0 0 0 0 rgba(239, 68, 68, .7);
-            animation: pulseDot 1.8s infinite
+            animation: pulseDot 1.8s infinite;
         }
 
         @keyframes pulseDot {
             0% {
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, .6)
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, .7);
             }
 
             70% {
-                box-shadow: 0 0 0 12px rgba(239, 68, 68, 0)
+                transform: scale(1.5);
+                /* cresce sem deformar */
+                box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
             }
 
             100% {
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0)
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
             }
         }
 
@@ -247,7 +253,7 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px
         }
 
@@ -427,22 +433,19 @@
             padding: 0;
         }
 
+        .item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         @media (max-width:900px) {
             h2 {
                 font-size: clamp(30px, 3vw, 30px)
             }
 
-            .item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
             .grid-3 {
                 grid-template-columns: 1fr;
             }
-
-
-
 
             .hero .inner,
             .grid-2 {
@@ -461,6 +464,20 @@
                 flex-direction: column;
                 align-items: stretch
             }
+
+            .mobile {
+                display: block !important;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .desktop {
+                display: none;
+            }
+
+            .players img {
+                width: 100% !important;
+            }
         }
 
         .top-bar {
@@ -472,6 +489,20 @@
             display: block;
             margin: 0 auto;
             width: 80px;
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .players {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .players img {
+            width: 600px;
         }
     </style>
 </head>
@@ -485,69 +516,108 @@
     <section class="hero">
         <div class="wrap inner">
             <div>
-                <div class="eyebrow">⚡ Edição Lendária • Série limitada <span
-                        style="color:var(--gold);font-weight:900;">001/500</span></div>
+                <div class="eyebrow">⚡ Edição Lendária <span style="color:var(--gold);font-weight:900;">001/500</span>
+                </div>
                 <h1>Legado em Movimento</h1>
-                <p class="lead">Cada par é <b>numerado</b>, com <b>assinatura oficial</b> e acabamento realmente
-                    <b>premium</b>. O tênis de quem não aceita ser comum.
+
+                <small> Tênis exclusivo da <b>InPulse</b></small>
+
+                <div class="mobile"><img alt="Banner — InPulse Edição Lendária" src="img/Legado-Movimento.png" />
+                </div>
+
+                <p class="lead">
+                    A <b>Edição Lendária</b> nasceu do nosso maior propósito com a InPulse: <b>transformar vidas por
+                        onde
+                        passamos.</b>
+                    <br /><br />
+
+                    Dois modelos oficiais exclusivos e <b>assinados</b> por <b>Geromel</b> e <b>Kannemann.</b>
+                    <br /><br />
+                    <b></b>Série
+                    numerada e histórica.
                 </p>
+                </p>
+
 
                 <div class="scarcity"><span class="pulse-dot" aria-hidden="true"></span> Alta demanda hoje •
                     disponibilidade por numeração sujeita a estoque</div>
 
                 <div class="cta">
                     <a class="btn btn-whats btn-cta" data-delay="0"
-                        href="https://wa.me/555196173859?text=Quero%20garantir%20meu%20InPulse%20da%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
+                        href="https://www.inpulseshoes.com.br/edicao-lendaria/?utm_source=landing&utm_medium=hero&utm_campaign=edicao_lendaria"
                         target="_blank" rel="noopener">🔥 Garantir o meu agora</a>
-                    <a class="btn btn-ghost btn-cta" data-delay="1" href="#detalhes">Ver por que é único</a>
+                    <a class="btn btn-ghost btn-cta" data-delay="1" href="#detalhes">Porque é lendária?</a>
                 </div>
 
+                <br />
+                <p>Toda a renda da <b>Edição Lendária</b> apoia diretamente o <b>Instituto Geração Tricolor (IGT)</b>
+                </p>
+                <br />
                 <div class="badges" aria-label="Sinais de confiança">
                     <span class="badge">✅ Compra 100% segura</span>
                     <span class="badge">📦 Rastreamento em tempo real</span>
                     <span class="badge">🔁 Troca fácil até 30 dias</span>
-                    <span class="badge">🛡️ Garantia 90 dias</span>
                 </div>
             </div>
 
-            <div><img alt="Banner — InPulse Edição Lendária" src="img/Legado-Movimento.png" />
+            <div class="desktop"><img alt="Banner — InPulse Edição Lendária" src="img/Legado-Movimento.png" />
             </div>
         </div>
     </section>
 
+
     <div class="wrap">
+
+        <div class="players inner">
+            <img src="img/ken-gero.jpg" alt="InPulse Logo" />
+        </div>
+
+
+        <p class=" lead">
+            Tênis <b>numerado</b>, com <b>assinatura oficial</b>, selo de autenticidade e
+            acabamento <b>premium</b>.<br /><br />Disponível em duas cores, <b>Preto</b> e <b>Branco</b>
+        </p>
+
 
         <!-- CORES -->
         <section class="section" id="cores">
             <div class="grid-2">
                 <div class="card">
+                    <h4>Edição Lendária — Preto</h4>
                     <img alt="Edição Lendária — Preto" src="img/Preto.png" />
-                    <h2>Cor Preta</h2>
+                    <h2>Geromel</h2>
                     <div class="list">
-                        <div class="item"><b>Impacto:</b> presença forte com detalhes azuis e assinatura em dourado.
+                        <div class="item">Presença forte com detalhes azuis e assinatura em dourado.
                         </div>
-                        <div class="item"><b>Estilo:</b> ideal pra noite e looks all black.</div>
+                        <div class="item">Um tênis para seu dia a dia, feito pra quem domina o all black.</div>
+
+                        <p>🔥 Restam alguns pares disponíveis.</p>
                     </div>
                     <div class="cta" style="margin-top:12px">
                         <a class="btn btn-whats btn-cta" data-delay="2"
-                            href="https://wa.me/555196173859?text=Quero%20o%20Preto%20da%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
-                            target="_blank" rel="noopener">Quero o Preto AGORA</a>
+                            href="https://www.inpulseshoes.com.br/produtos/tenis-impulso-edicao-lendaria-gremio-geromel/?utm_source=landing&utm_medium=cores&utm_campaign=edicao_lendaria"
+                            target="_blank" rel="noopener">👉 Quero AGORA</a>
                     </div>
                     <small style="color:#cbd5e1;display:block;margin-top:8px">Sujeito à disponibilidade por
                         numeração.</small>
                 </div>
 
                 <div class="card">
+                    <h4>Edição Lendária — Branco</h4>
                     <img alt="Edição Lendária — Branco" src="img/Branco.png" />
-                    <h2>Cor Branca</h2>
+                    <h2>Kannemann</h2>
                     <div class="list">
-                        <div class="item"><b>Elegância:</b> leve, clean e versátil pro dia a dia.</div>
-                        <div class="item"><b>Versatilidade:</b> combina com jeans, tactel e alfaiataria.</div>
+                        <div class="item">Elegante, leve, clean e versátil pro dia a dia.
+                        </div>
+                        <div class="item">Um tênis para o seu dia a dia, que combina com jeans, tactel e
+                            alfaiataria.
+                        </div>
+                        <p>⚡ Série limitada, corre que não vai durar.</p>
                     </div>
                     <div class="cta" style="margin-top:12px">
                         <a class="btn btn-whats btn-cta" data-delay="3"
-                            href="https://wa.me/555196173859?text=Quero%20o%20Branco%20da%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
-                            target="_blank" rel="noopener">Quero o Branco AGORA</a>
+                            href="https://www.inpulseshoes.com.br/produtos/tenis-impulso-edicao-lendaria-gremio-kannemann/?utm_source=landing&utm_medium=cores&utm_campaign=edicao_lendaria"
+                            target="_blank" rel="noopener">👉 Quero AGORA</a>
                     </div>
                     <small style="color:#cbd5e1;display:block;margin-top:8px">Sujeito à disponibilidade por
                         numeração.</small>
@@ -557,11 +627,12 @@
 
         <!-- POR QUE É ÚNICO -->
         <section class="section" id="detalhes">
-            <h2>Por que este tênis é diferente</h2>
+            <h2>Um tênis lendário</h2>
             <div class="grid-3">
                 <div class="card">
                     <img alt="Etiqueta numerada 001/500" src="img/etiqueta.png" />
-                    <p><b>Série limitada numerada</b><br />Cada par leva etiqueta <b>001/500</b> na língua. Não haverá
+                    <p><b>Série limitada numerada</b><br />Cada par leva etiqueta <b>001/500</b> na língua. Não
+                        haverá
                         reposição.</p>
                 </div>
                 <div class="card">
@@ -576,50 +647,35 @@
 
             <div class="kpis" style="margin-top:16px;">
                 <div class="kpi"><b>Rastreamento</b><span>código por e-mail/Whats</span></div>
-                <div class="kpi"><b>Garantia 90 dias</b><span>contra defeitos de fabricação</span></div>
+                <div class="kpi"><b>Entrega Rápida</b><span>envio imediato após compra</span></div>
                 <div class="kpi"><b>Troca fácil</b><span>até 30 dias</span></div>
             </div>
 
             <div class="cta" style="margin-top:16px">
                 <a class="btn btn-whats btn-cta" data-delay="0"
-                    href="https://wa.me/555196173859?text=Quero%20garantir%20meu%20InPulse%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
+                    href="https://www.inpulseshoes.com.br/edicao-lendaria/?utm_source=landing&utm_medium=detalhes&utm_campaign=edicao_lendaria"
                     target="_blank" rel="noopener">Garantir o meu agora</a>
                 <a class="btn btn-ghost btn-cta" data-delay="1" href="#faq">Tirar dúvidas</a>
             </div>
         </section>
 
-        <!-- COMO COMPRAR -->
-        <section class="section">
-            <div class="card">
-                <h2>Como comprar (rápido)</h2>
-                <ol>
-                    <li>Clique em <b>Garantir o meu agora</b>.</li>
-                    <li>Envie seu <b>tamanho</b> (34 ao 44) e <b>cor</b> desejada.</li>
-                    <li>Escolha o pagamento (<b>Pix</b> ou <b>cartão</b>) e pronto.</li>
-                </ol>
-                <ul class="inline" aria-label="Benefícios">
-                    <li>Envio para todo o Brasil</li>
-                    <li>Atendimento humano e rápido</li>
-                    <li>Nota fiscal</li>
-                </ul>
-                <div style="margin-top:12px;">
-                    <a class="btn btn-whats btn-cta" data-delay="2"
-                        href="https://wa.me/555196173859?text=Quero%20garantir%20meu%20InPulse%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
-                        target="_blank" rel="noopener">Falar agora no WhatsApp</a>
-                </div>
-                <small style="display:block;margin-top:8px;color:#cbd5e1">⚠️ Lembrete: são apenas 500 pares no
-                    total.</small>
-            </div>
-        </section>
 
         <!-- GALERIA -->
         <section class="section">
             <div class="card">
-                <h2>Galeria</h2>
                 <div class="gallery">
-                    <img alt="Preto — lateral" src="img/close.png" />
-                    <img alt="Preto — ângulo" src="img/Preto.png" />
-                    <img alt="Branco — ângulo" src="img/Branco.png" />
+                    <!--<img alt="Preto — lateral" src="img/close.png" />-->
+
+                    <img alt="Geromel com o tênis" src="img/geromel.jpeg" />
+
+                    <!--<img alt="Preto — ângulo" src="img/Preto.png" />-->
+
+                    <img alt="Kannemann com o tênis" src="img/kannemann.jpeg" />
+
+
+                    <!--<img alt="Branco — ângulo" src="img/Branco.png" />-->
+
+
                 </div>
             </div>
         </section>
@@ -630,7 +686,8 @@
                 <h2>Dúvidas rápidas</h2>
                 <dl class="faq">
                     <dt>Tem numeração grande/pequena?</dt>
-                    <dd>Grade do <b>34 ao 44</b>. Fala no Whats que a gente confirma disponibilidade por numeração.</dd>
+                    <dd>Grade do <b>34 ao 44</b>. Fala no Whats que a gente confirma disponibilidade por numeração.
+                    </dd>
                     <dt>Se não servir, posso trocar?</dt>
                     <dd>Sim. Troca fácil em até <b>30 dias</b>, dentro da caixa e sem uso.</dd>
                     <dt>É original da Edição Lendária mesmo?</dt>
@@ -638,12 +695,10 @@
                         acabou.</dd>
                     <dt>Entrega e rastreio?</dt>
                     <dd>Envio para todo o Brasil com <b>código de rastreamento</b> enviado por e-mail/Whats.</dd>
-                    <dt>Qual a garantia?</dt>
-                    <dd><b>90 dias</b> contra defeitos de fabricação.</dd>
                 </dl>
                 <div class="cta" style="margin-top:12px">
                     <a class="btn btn-whats btn-cta" data-delay="3"
-                        href="https://wa.me/555196173859?text=Quero%20garantir%20meu%20InPulse%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
+                        href="https://www.inpulseshoes.com.br/edicao-lendaria?utm_source=landing&utm_medium=faq&utm_campaign=edicao_lendaria"
                         target="_blank" rel="noopener">Quero garantir o meu</a>
                 </div>
             </div>
@@ -654,15 +709,30 @@
             <div class="wrap bar">
                 <small>⚡ Série limitada — restam algumas unidades por numeração.</small>
                 <a class="btn btn-whats btn-cta" data-delay="0"
-                    href="https://wa.me/555196173859?text=Quero%20garantir%20meu%20InPulse%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
+                    href="https://www.inpulseshoes.com.br/edicao-lendaria/?utm_source=landing&utm_medium=sticky&utm_campaign=edicao_lendaria"
                     target="_blank" rel="noopener" aria-label="Comprar via WhatsApp">Garantir agora</a>
             </div>
         </div>
 
+        <p class="lead">
+
+            <img src="img/IGT.png" title="Instituto Geração Tricolor" alt="Instituto Geração Tricolor" width="300"
+                style="background-color: #fff; margin: 0 auto; display: table;" />
+            <br />
+            <b>InPulse</b> é uma marca que apoia o <b>Instituto Geração Tricolor (IGT)</b>
+            <br /><br />
+            100% dos lucros da Edição Lendária
+            vão direto pra essa causa.
+            <br /><br />
+            Ao comprar o <b>Tênis Edição Lendária</b>, tu contribui pra que o IGT siga atendendo jovens através da
+            garantia de
+            direitos e a construção da cidadania.
+        </p>
+
         <!-- CTA FINAL -->
         <section class="section" style="text-align:center;">
             <a class="btn btn-whats btn-cta" data-delay="1"
-                href="https://wa.me/555196173859?text=Quero%20garantir%20meu%20InPulse%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria"
+                href="https://www.inpulseshoes.com.br/edicao-lendaria/?utm_source=landing&utm_medium=final&utm_campaign=edicao_lendaria"
                 target="_blank" rel="noopener">🔥 Garantir o meu agora</a>
             <div style="margin-top:8px; color:#9ca3af;">Série limitada • Enquanto durarem os estoques</div>
         </section>
@@ -686,6 +756,289 @@
             </path>
         </svg>
     </a>
+    <!-- Modal de zoom -->
+    <div id="img-modal"
+        style="display:none; position:fixed; z-index:9999; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center;">
+        <img id="img-modal-content" src=""
+            style="max-width:90%; max-height:90%; border-radius:12px; box-shadow:0 0 25px rgba(0,0,0,.8);" />
+    </div>
+    <!-- Modal de zoom -->
+    <div id="img-modal"
+        style="display:none; position:fixed; z-index:9999; inset:0; background:rgba(0,0,0,.9); justify-content:center; align-items:center; touch-action:none;">
+        <img id="img-modal-content" src="" style="max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 0 25px rgba(0,0,0,.8);
+              transform: translate3d(0,0,0) scale(1); will-change: transform; touch-action:none;" />
+        <!-- Fechar -->
+        <button id="img-close" style="position:absolute; top:14px; right:14px; background:rgba(0,0,0,.6); color:#fff; border:1px solid rgba(255,255,255,.25);
+                 border-radius:999px; padding:10px 14px; font-weight:900; cursor:pointer">✕</button>
+    </div>
+
+    <script>
+        (() => {
+            // pega todas as imagens menos os banners do hero
+            const imgs = document.querySelectorAll("img:not([alt*='Banner'])");
+            const modal = document.getElementById("img-modal");
+            const modalImg = document.getElementById("img-modal-content");
+            const closeBtn = document.getElementById("img-close");
+
+            // estado de zoom/pan
+            const state = {
+                scale: 1,
+                minScale: 1,
+                maxScale: 5,
+                x: 0,
+                y: 0,
+                start: { x: 0, y: 0 },
+                last: { x: 0, y: 0 },
+                isPanning: false,
+                pointers: new Map(),
+                initPinchDist: 0,
+                initScale: 1,
+                doubleTapTime: 0,
+            };
+
+            imgs.forEach(img => {
+                img.style.cursor = "zoom-in";
+                img.addEventListener("click", () => openModal(img.src));
+            });
+
+            function openModal(src) {
+                modal.style.display = "flex";
+                modalImg.src = src;
+                resetTransform();
+                // evitar scroll da página atrás do modal
+                document.documentElement.style.overflow = "hidden";
+                document.body.style.overscrollBehavior = "none";
+            }
+            function closeModal() {
+                modal.style.display = "none";
+                modalImg.src = "";
+                document.documentElement.style.overflow = "";
+                document.body.style.overscrollBehavior = "";
+            }
+            closeBtn.addEventListener("click", closeModal);
+            modal.addEventListener("click", (e) => {
+                // só fecha se clicar fora da imagem
+                if (e.target === modal) closeModal();
+            });
+
+            function resetTransform() {
+                state.scale = 1; state.x = 0; state.y = 0;
+                applyTransform();
+            }
+            function applyTransform() {
+                modalImg.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.scale})`;
+            }
+            function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
+
+            // limites de arrasto de acordo com escala e tamanho visível
+            function clampPan(nx, ny) {
+                const rect = modalImg.getBoundingClientRect();
+                const vw = Math.min(window.innerWidth * 0.9, rect.width / state.scale); // largura "base"
+                const vh = Math.min(window.innerHeight * 0.9, rect.height / state.scale);
+                const maxX = ((rect.width * state.scale) - vw) / 2;
+                const maxY = ((rect.height * state.scale) - vh) / 2;
+                state.x = clamp(nx, -maxX || 0, maxX || 0);
+                state.y = clamp(ny, -maxY || 0, maxY || 0);
+            }
+
+            // ------- Gestos por Pointer Events (pinça + pan) -------
+            const activePointers = new Map();
+
+            modalImg.addEventListener("pointerdown", (e) => {
+                modalImg.setPointerCapture(e.pointerId);
+                activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+                if (activePointers.size === 1) {
+                    state.isPanning = true;
+                    state.start.x = e.clientX - state.x;
+                    state.start.y = e.clientY - state.y;
+                } else if (activePointers.size === 2) {
+                    // pinça inicia
+                    const pts = [...activePointers.values()];
+                    state.initPinchDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+                    state.initScale = state.scale;
+                    state.isPanning = false;
+                }
+            });
+
+            modalImg.addEventListener("pointermove", (e) => {
+                if (!activePointers.has(e.pointerId)) return;
+                activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+                if (activePointers.size === 1 && state.scale > 1) {
+                    // pan com um dedo
+                    const p = activePointers.get(e.pointerId);
+                    const nx = p.x - state.start.x;
+                    const ny = p.y - state.start.y;
+                    clampPan(nx, ny);
+                    applyTransform();
+                } else if (activePointers.size === 2) {
+                    // pinça (zoom)
+                    const pts = [...activePointers.values()];
+                    const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+                    if (state.initPinchDist > 0) {
+                        const rawScale = (dist / state.initPinchDist) * state.initScale;
+                        const newScale = clamp(rawScale, state.minScale, state.maxScale);
+
+                        // manter foco no ponto médio da pinça
+                        const midX = (pts[0].x + pts[1].x) / 2;
+                        const midY = (pts[0].y + pts[1].y) / 2;
+                        zoomAtPoint(newScale, midX, midY);
+                    }
+                }
+            });
+
+            modalImg.addEventListener("pointerup", (e) => {
+                activePointers.delete(e.pointerId);
+                if (activePointers.size === 0) state.isPanning = false;
+            });
+            modalImg.addEventListener("pointercancel", (e) => {
+                activePointers.delete(e.pointerId);
+                if (activePointers.size === 0) state.isPanning = false;
+            });
+
+            // ------- Duplo toque (mobile) para alternar zoom -------
+            modalImg.addEventListener("click", (e) => {
+                const now = Date.now();
+                if (now - state.doubleTapTime < 250) {
+                    // duplo toque
+                    const targetScale = state.scale > 1 ? 1 : 2.2;
+                    zoomAtPoint(targetScale, e.clientX, e.clientY);
+                }
+                state.doubleTapTime = now;
+            }, { passive: true });
+
+            // ------- Scroll (desktop) para zoom -------
+            modalImg.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                const delta = -e.deltaY; // pra cima aumenta
+                const factor = delta > 0 ? 1.15 : 0.85;
+                const newScale = clamp(state.scale * factor, state.minScale, state.maxScale);
+                zoomAtPoint(newScale, e.clientX, e.clientY);
+            }, { passive: false });
+
+            function zoomAtPoint(newScale, clientX, clientY) {
+                // converter ponto da tela para o espaço da imagem
+                const imgRect = modalImg.getBoundingClientRect();
+                const offsetX = clientX - (imgRect.left + imgRect.width / 2);
+                const offsetY = clientY - (imgRect.top + imgRect.height / 2);
+
+                // proporção de mudança
+                const scaleFactor = newScale / state.scale;
+
+                // ajustar pan para que o ponto sob o cursor permaneça estável
+                const nx = (state.x - offsetX) * scaleFactor + offsetX;
+                const ny = (state.y - offsetY) * scaleFactor + offsetY;
+
+                state.scale = newScale;
+                clampPan(nx, ny);
+                applyTransform();
+            }
+
+            // Fechar com ESC
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+            });
+        })();
+    </script>
+    <script>
+        (() => {
+            // Se o browser NÃO suportar Pointer Events, cai pro fallback via Touch Events
+            if (!window.PointerEvent) {
+                const modal = document.getElementById("img-modal");
+                const img = document.getElementById("img-modal-content");
+
+                let scale = 1, minScale = 1, maxScale = 5;
+                let x = 0, y = 0;
+                let doubleTapTime = 0;
+                let startX = 0, startY = 0;
+                let isPanning = false;
+
+                // p/ pinça
+                let t1 = null, t2 = null;
+                let initDist = 0, initScale = 1;
+
+                function apply() {
+                    img.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+                }
+                function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+                function clampPan(nx, ny) {
+                    const rect = img.getBoundingClientRect();
+                    const vw = rect.width / scale, vh = rect.height / scale;
+                    const maxX = ((rect.width * scale) - vw) / 2;
+                    const maxY = ((rect.height * scale) - vh) / 2;
+                    x = clamp(nx, -maxX || 0, maxX || 0);
+                    y = clamp(ny, -maxY || 0, maxY || 0);
+                }
+                function zoomAtPoint(newScale, cx, cy) {
+                    const r = img.getBoundingClientRect();
+                    const ox = cx - (r.left + r.width / 2);
+                    const oy = cy - (r.top + r.height / 2);
+                    const factor = newScale / scale;
+                    const nx = (x - ox) * factor + ox;
+                    const ny = (y - oy) * factor + oy;
+                    scale = clamp(newScale, minScale, maxScale);
+                    clampPan(nx, ny);
+                    apply();
+                }
+
+                // pan + pinça
+                img.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 1) {
+                        isPanning = true;
+                        startX = e.touches[0].clientX - x;
+                        startY = e.touches[0].clientY - y;
+
+                        // duplo toque
+                        const now = Date.now();
+                        if (now - doubleTapTime < 250) {
+                            const target = scale > 1 ? 1 : 2.2;
+                            zoomAtPoint(target, e.touches[0].clientX, e.touches[0].clientY);
+                        }
+                        doubleTapTime = now;
+                    } else if (e.touches.length === 2) {
+                        isPanning = false;
+                        t1 = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                        t2 = { x: e.touches[1].clientX, y: e.touches[1].clientY };
+                        initDist = Math.hypot(t1.x - t2.x, t1.y - t2.y);
+                        initScale = scale;
+                    }
+                }, { passive: true });
+
+                img.addEventListener('touchmove', (e) => {
+                    // evita “borracha” do iOS quando modal aberto
+                    e.preventDefault();
+
+                    if (e.touches.length === 1 && isPanning && scale > 1) {
+                        const nx = e.touches[0].clientX - startX;
+                        const ny = e.touches[0].clientY - startY;
+                        clampPan(nx, ny);
+                        apply();
+                    } else if (e.touches.length === 2) {
+                        const n1 = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                        const n2 = { x: e.touches[1].clientX, y: e.touches[1].clientY };
+                        const dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
+                        if (initDist > 0) {
+                            const raw = (dist / initDist) * initScale;
+                            const midX = (n1.x + n2.x) / 2;
+                            const midY = (n1.y + n2.y) / 2;
+                            zoomAtPoint(raw, midX, midY);
+                        }
+                    }
+                }, { passive: false });
+
+                img.addEventListener('touchend', () => {
+                    if (event.touches.length === 0) {
+                        isPanning = false;
+                        t1 = t2 = null;
+                    }
+                }, { passive: true });
+
+                // bloquear scroll de fundo no iOS enquanto aberto (só por garantia)
+                modal.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false });
+            }
+        })();
+    </script>
+
 
 
 </body>
