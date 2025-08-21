@@ -1,27 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edição Lendária - InPulse</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Edição Lendária — InPulse • Legado em Movimento</title>
+<meta name="description" content="Série limitada 001/500 — Tênis exclusivo da InPulse com assinatura, selo oficial e acabamento premium. Garanta o seu pelo WhatsApp." />
+<style>
+  :root { --blue:#0a2a6b; --blue2:#153b8f; --gold:#f5d47a; --text:#0f1222; --muted:#6b7280; --bg:#0b1120; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:#e5e7eb; background:var(--bg); }
+  .wrap { max-width:1100px; margin:0 auto; padding: 24px; }
+  .hero { background: radial-gradient(70% 80% at 50% 15%, var(--blue2) 0%, var(--blue) 55%, #050b1a 100%); }
+  .hero .inner{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:center; }
+  .eyebrow { display:inline-flex; gap:8px; align-items:center; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); padding:8px 14px; border-radius:999px; font-weight:700; color:#fff; }
+  h1 { color:var(--gold); font-size: clamp(34px, 5vw, 60px); margin:10px 0; line-height:1.05; }
+  .lead { color:#eaf2ff; opacity:.95; font-size:clamp(16px, 2.1vw, 22px); }
+  .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+  .btn { border:none; border-radius:999px; padding:14px 20px; font-weight:800; cursor:pointer; text-decoration:none; display:inline-block; }
+  .btn-whats { background:#25D366; color:#06210f; }
+  .btn-ghost { background:transparent; color:#e5e7eb; border:1.5px solid rgba(255,255,255,.45); }
+  .hero img { width:100%; border-radius:18px; box-shadow: 0 14px 48px rgba(0,0,0,.45); }
+  .section { padding: 36px 0; }
+  h2 { font-size: clamp(24px, 3vw, 36px); color:#fff; margin:6px 0 12px; }
+  p { color:#d1d5db; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:18px; }
+  .card img { width:100%; border-radius:12px; }
+  .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .gallery img { width:100%; border-radius:14px; }
+  .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .kpi { text-align:center; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:16px; }
+  .kpi b { color:#fff; font-size:22px; display:block; }
+  .footer { text-align:center; color:#9ca3af; padding:32px 16px; }
+  @media (max-width: 900px) {
+    .hero .inner, .grid-2 { grid-template-columns:1fr; }
+    .gallery { grid-template-columns:1fr 1fr; }
+    .kpis { grid-template-columns:1fr; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Edição Lendária</h1>
-    <p>Feita por ídolos. Usada por quem acredita.</p>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h2>O movimento começa nos pés</h2>
-      <p>Um tênis que carrega orgulho, história e impacto real.</p>
-      <a href="#" class="cta">Garanta o seu</a>
-    </section>
-  </main>
+<section class="hero">
+  <div class="wrap inner">
+    <div>
+      <div class="eyebrow">⚡ Edição Lendária • Série limitada <span style="color:var(--gold);font-weight:900;">001/500</span></div>
+      <h1>Legado em Movimento</h1>
+      <p class="lead">Tênis exclusivo da InPulse com assinatura, selo oficial e acabamento premium. Duas cores — <b>Preto</b> e <b>Branco</b>. Converse e garanta o seu agora mesmo.</p>
+      <div class="cta">
+        <a class="btn btn-whats" href="https://wa.me/5551994739052?text=Quero%20garantir%20meu%20t%C3%AAnis%20da%20Edi%C3%A7%C3%A3o%20Lend%C3%A1ria!%20Tamanho:%20___%20Cor:%20___&utm_source=whatsapp&utm_medium=landing&utm_campaign=edicao_lendaria" target="_blank">💬 Garantir o seu no WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <img src="https://via.placeholder.com/500x400.png?text=Tenis+Edi%C3%A7%C3%A3o+Lend%C3%A1ria" alt="Tênis Edição Lendária InPulse">
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p>InPulse &copy; 2025 - Todos os direitos reservados</p>
-  </footer>
+<section class="section wrap">
+  <h2>Detalhes Exclusivos</h2>
+  <div class="grid-3">
+    <div class="card"><img src="https://via.placeholder.com/300x200.png?text=Assinatura" alt=""><p>Selo oficial de autenticidade e assinatura do ídolo.</p></div>
+    <div class="card"><img src="https://via.placeholder.com/300x200.png?text=Premium" alt=""><p>Acabamento premium e conforto para todas as ocasiões.</p></div>
+    <div class="card"><img src="https://via.placeholder.com/300x200.png?text=Limitado" alt=""><p>Edição limitada numerada — apenas 500 pares.</p></div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <h2>Galeria</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+1" alt="">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+2" alt="">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+3" alt="">
+  </div>
+</section>
+
+<section class="section wrap">
+  <h2>Impacto</h2>
+  <div class="kpis">
+    <div class="kpi"><b>500</b> pares únicos</div>
+    <div class="kpi"><b>2</b> cores exclusivas</div>
+    <div class="kpi"><b>100%</b> autenticidade</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>InPulse © 2025 — Todos os direitos reservados</p>
+</footer>
+
 </body>
 </html>
